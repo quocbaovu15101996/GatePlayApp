@@ -15,8 +15,9 @@ const layoutAuthenticate: LayoutRoot = {
                 height: 0,
               },
               statusBar: {
+                style: "dark",
                 visible: false,
-                drawBehind: false,
+                drawBehind: true,
               },
             },
           },

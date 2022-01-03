@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import LinearGradient from "react-native-linear-gradient";
 import { startApp } from "../../libs/navigation/Utils";
@@ -11,7 +11,7 @@ const Login: FunctionComponent = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <LinearGradient
         colors={["#481E34", "#16192B"]}
         end={{ x: 1, y: 1 }}
@@ -56,7 +56,7 @@ const Login: FunctionComponent = () => {
           </LinearGradient>
         </TouchableOpacity>
       </LinearGradient>
-    </View>
+    </SafeAreaView>
   );
 };
 
