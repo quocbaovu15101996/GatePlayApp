@@ -59,12 +59,19 @@
     // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
     "baseUrl": "./",
-    "paths": {
+    "paths": {                                /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
       "*": ["./*"],
       "@components/*": ["src/components/*"],
+      "@constants/*": ["src/constants/*"],
+      "@contexts/*": ["src/contexts/*"],
       "@screens/*": ["src/screens/*"],
+      "@modules/*": ["src/modules/*"],
+      "@queries/*": ["src/queries/*"],
+      "@hoc/*": ["src/hoc/*"],
+      "@hooks/*": ["src/hooks/*"],
       "@libs/*": ["src/libs/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@styles/*": ["src/styles/*"],
     },
     "typeRoots": [
       /* List of folders to include type definitions from. */ "./src/types"

@@ -16,12 +16,12 @@
           "@libs": "./src/libs",
           "@modules": "./src/modules",
           "@queries": "./src/queries",
-          "@redux": "./src/redux",
           "@utils": "./src/utils",
           "@styles": "./src/styles"
         }
       }
-    ]
+    ],
+    ["module:react-native-dotenv"]
   ],
   "env": {
     "production": {

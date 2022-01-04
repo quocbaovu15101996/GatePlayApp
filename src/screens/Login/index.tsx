@@ -1,4 +1,5 @@
-import React, { FunctionComponent } from "react";
+import { API_URL } from "@env";
+import React, { FunctionComponent, useEffect } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,9 +10,10 @@ import {
 import FastImage from "react-native-fast-image";
 import LinearGradient from "react-native-linear-gradient";
 import useDebounce from "src/hooks/useDebounce";
+import { getRequestUrl } from "src/libs/api";
 import { Navigation } from "src/libs/navigation";
 import { component } from "src/libs/navigation/Layouts";
-import { startApp } from "src/libs/navigation/Utils";
+import { request } from "src/libs/request";
 import { Storage } from "src/modules/Storage";
 import { textMedium, textSmall } from "src/styles/text.style";
 import { ICON_LOGIN } from "src/utils/enum";
@@ -19,6 +21,15 @@ import { scale } from "src/utils/Scale";
 import { Screens } from "../Screens";
 
 const Login: FunctionComponent = () => {
+  const testFetchApi = async () => {
+    const url = getRequestUrl("public/v1/market/get-summaries");
+    const { data } = await request<any>(url);
+  };
+
+  useEffect(() => {
+    testFetchApi();
+  }, []);
+
   const onPressLogin = useDebounce(() => {
     Navigation.push(
       Storage.currentScreenStackId,
