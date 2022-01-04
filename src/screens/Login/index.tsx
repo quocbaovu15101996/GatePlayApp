@@ -1,5 +1,4 @@
-import { API_URL } from "@env";
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FunctionComponent } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -10,27 +9,17 @@ import {
 import FastImage from "react-native-fast-image";
 import LinearGradient from "react-native-linear-gradient";
 import useDebounce from "src/hooks/useDebounce";
-import { getRequestUrl } from "src/libs/api";
-import { Navigation } from "src/libs/navigation";
-import { component } from "src/libs/navigation/Layouts";
 import { startApp } from "src/libs/navigation/Utils";
-import { request } from "src/libs/request";
-import { Storage } from "src/modules/Storage";
-import { textMedium, textSmall } from "src/styles/text.style";
+import {
+  textBoldMedium,
+  textLarge,
+  textMedium,
+  textSmall,
+} from "src/styles/text.style";
 import { ICON_LOGIN } from "src/utils/enum";
 import { scale } from "src/utils/Scale";
-import { Screens } from "../Screens";
 
 const Login: FunctionComponent = () => {
-  const testFetchApi = async () => {
-    const url = getRequestUrl("public/v1/market/get-summaries");
-    const { data } = await request<any>(url);
-  };
-
-  useEffect(() => {
-    // testFetchApi();
-  }, []);
-
   const onPressLogin = useDebounce(() => {
     startApp();
     // Navigation.push(
@@ -43,7 +32,7 @@ const Login: FunctionComponent = () => {
   }, 300);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <LinearGradient
         colors={["#481E34", "#16192B"]}
         end={{ x: 1, y: 1 }}
@@ -58,7 +47,11 @@ const Login: FunctionComponent = () => {
           </View>
         </View>
 
-        <TouchableOpacity onPress={onPressLogin} style={{ marginTop: 30 }}>
+        <TouchableOpacity
+          onPress={onPressLogin}
+          style={styles.btnLogin}
+          activeOpacity={0.9}
+        >
           <LinearGradient
             colors={["#FD5F57", "#FC2E66"]}
             end={{ x: 1, y: 0 }}
@@ -73,7 +66,7 @@ const Login: FunctionComponent = () => {
           <Text style={styles.textSignUp}>Sign up now!</Text>
         </Text>
       </LinearGradient>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -85,6 +78,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    paddingHorizontal: 64,
   },
   iconLogo: {
     height: 70,
@@ -110,12 +104,13 @@ const styles = StyleSheet.create({
     paddingLeft: 6,
   },
   textLogin: {
-    color: "white",
     fontWeight: "bold",
+    ...textLarge,
+    color: "white",
   },
   gradientBtn: {
-    width: scale(250),
-    height: 40,
+    width: "100%",
+    height: 48,
     backgroundColor: "green",
     borderRadius: 30,
     justifyContent: "center",
@@ -126,8 +121,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   textSignUp: {
-    ...textMedium,
+    ...textBoldMedium,
     color: "#FD2D67",
+  },
+  btnLogin: {
+    marginTop: 30,
+    width: "100%",
   },
 });
 
