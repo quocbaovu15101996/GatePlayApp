@@ -1,4 +1,6 @@
 import { LayoutRoot, Navigation } from "react-native-navigation";
+import { Storage } from "src/modules/Storage";
+import { APP_STACK_ID } from "src/utils/enum";
 import { Screens } from "../../screens/Screens";
 
 const layoutAuthenticate: LayoutRoot = {
@@ -28,6 +30,7 @@ const layoutAuthenticate: LayoutRoot = {
 };
 
 export function startLogin(): void {
+  Storage.currentScreenStackId = APP_STACK_ID.login;
   Navigation.setRoot(layoutAuthenticate);
 }
 

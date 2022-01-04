@@ -1,0 +1,31 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["."],
+        "extensions": [".ios.js", ".android.js", ".js", ".ts", ".tsx", ".json"],
+        "alias": {
+          "src": "./src",
+          "@components": "./src/components",
+          "@constants": "./src/constants",
+          "@contexts": "./src/contexts",
+          "@screens": "./src/screens",
+          "@hoc": "./src/hoc",
+          "@hooks": "./src/hooks",
+          "@libs": "./src/libs",
+          "@modules": "./src/modules",
+          "@queries": "./src/queries",
+          "@redux": "./src/redux",
+          "@utils": "./src/utils",
+          "@styles": "./src/styles"
+        }
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "plugins": ["transform-remove-console"]
+    }
+  }
+}

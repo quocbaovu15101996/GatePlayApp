@@ -11,6 +11,8 @@
     "clean-project": "watchman watch-del-all && rm -rf node_modules && yarn cache clean && rm -rf ios/build && rm -rf ios/Podfile.lock && rm -rf yarn.lock && rm -rf ios/pods && rm -rf android/build && rm -rf android/app/build && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-*"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.178",
+    "lodash": "^4.17.21",
     "react": "17.0.2",
     "react-native": "0.66.4",
     "react-native-fast-image": "^8.5.11",
@@ -27,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
     "babel-jest": "^26.6.3",
+    "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^7.14.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.66.2",
