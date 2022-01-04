@@ -1,6 +1,9 @@
 import { API_URL } from "@env";
 import { isNullOrEmpty } from "src/utils/Lang";
 import { GetRequestParams } from "./type";
+import * as api from './config';
+
+export const url = api.url;
 
 export function getQueryString(requestUrl: string, params: ObjectType): string {
   if (typeof params === "object" && params) {

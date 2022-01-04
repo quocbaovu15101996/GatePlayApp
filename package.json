@@ -9,20 +9,22 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start:production": "APP_ENV=production npx react-native start",
-    "start:development": "APP_ENV=development npx react-native start",
+    "start:staging": "APP_ENV=staging npx react-native start",
     "clean-project": "watchman watch-del-all && rm -rf node_modules && yarn cache clean && rm -rf ios/build && rm -rf ios/Podfile.lock && rm -rf yarn.lock && rm -rf ios/pods && rm -rf android/build && rm -rf android/app/build && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-*"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.14",
     "@types/lodash": "^4.14.178",
-    "lodash": "^4.17.21",
     "axios": "^0.21.1",
+    "lodash": "^4.17.21",
     "performance-now": "^2.1.0",
     "react": "17.0.2",
     "react-native": "0.66.4",
     "react-native-dotenv": "^3.3.1",
     "react-native-fast-image": "^8.5.11",
     "react-native-linear-gradient": "^2.5.6",
-    "react-native-navigation": "^7.24.3"
+    "react-native-navigation": "^7.24.3",
+    "react-query": "^3.34.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

@@ -2,10 +2,10 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationFunctionComponent } from "react-native-navigation";
 
-const ListGame: NavigationFunctionComponent = () => {
+const Erace: NavigationFunctionComponent = () => {
   return (
     <View style={styles.container}>
-      <Text>ListGame</Text>
+      <Text>Erace</Text>
     </View>
   );
 };
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListGame;
+export default Erace;

@@ -6,4 +6,6 @@ export const config = {
   version: 1,
 };
 
-export const url = {};
+export const url = {
+  listGame: "public/v1/market/get-summaries",
+};

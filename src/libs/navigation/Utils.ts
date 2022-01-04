@@ -41,28 +41,6 @@ const layoutRoot: LayoutRoot = {
       children: [
         {
           stack: {
-            id: "PROFILE_TAB",
-            children: [
-              {
-                component: {
-                  id: "PROFILE_SCREEN",
-                  name: Screens.Profile,
-                },
-              },
-            ],
-            options: {
-              bottomTab: {
-                testID: "PROFILE_SCREEN_TAB",
-                text: "Account/Wallet",
-                selectedTextColor: "#009FE0",
-                icon: require("../../../assets/bottomTabs/home.png"),
-                selectedIcon: require("../../../assets/bottomTabs/selected_home.png"),
-              },
-            },
-          },
-        },
-        {
-          stack: {
             id: "LISTGAME_TAB",
             children: [
               {
@@ -76,9 +54,67 @@ const layoutRoot: LayoutRoot = {
               bottomTab: {
                 testID: "LISTGAME_SCREEN_TAB",
                 text: "Game List",
-                selectedTextColor: "#009FE0",
-                icon: require("../../../assets/bottomTabs/me.png"),
-                selectedIcon: require("../../../assets/bottomTabs/selected_me.png"),
+                textColor: "#373D57",
+                selectedTextColor: "#F96655",
+                icon: require("../../../assets/bottomTabs/listgame.png"),
+                selectedIcon: require("../../../assets/bottomTabs/selected_listgame.png"),
+              },
+              bottomTabs: {
+                backgroundColor: "#151928",
+              },
+            },
+          },
+        },
+        {
+          stack: {
+            id: "PROFILE_TAB",
+            children: [
+              {
+                component: {
+                  id: "PROFILE_SCREEN",
+                  name: Screens.Profile,
+                },
+              },
+            ],
+            options: {
+              bottomTab: {
+                testID: "PROFILE_SCREEN_TAB",
+                text: "Account/Wallet",
+                textColor: "#373D57",
+                selectedTextColor: "#F96655",
+                icon: require("../../../assets/bottomTabs/account.png"),
+                selectedIcon: require("../../../assets/bottomTabs/selected_account.png"),
+                iconWidth: 10,
+                iconHeight: 10,
+              },
+              bottomTabs: {
+                backgroundColor: "#151928",
+              },
+            },
+          },
+        },
+        {
+          stack: {
+            id: "ERACE_TAB",
+            children: [
+              {
+                component: {
+                  id: "ERACE_SCREEN",
+                  name: Screens.Erace,
+                },
+              },
+            ],
+            options: {
+              bottomTab: {
+                testID: "ERAC_SCREEN_TAB",
+                text: "Erace",
+                textColor: "#373D57",
+                selectedTextColor: "#F96655",
+                icon: require("../../../assets/bottomTabs/erace.png"),
+                selectedIcon: require("../../../assets/bottomTabs/selected_erace.png"),
+              },
+              bottomTabs: {
+                backgroundColor: "#151928",
               },
             },
           },

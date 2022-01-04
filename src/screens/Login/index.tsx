@@ -13,6 +13,7 @@ import useDebounce from "src/hooks/useDebounce";
 import { getRequestUrl } from "src/libs/api";
 import { Navigation } from "src/libs/navigation";
 import { component } from "src/libs/navigation/Layouts";
+import { startApp } from "src/libs/navigation/Utils";
 import { request } from "src/libs/request";
 import { Storage } from "src/modules/Storage";
 import { textMedium, textSmall } from "src/styles/text.style";
@@ -27,17 +28,18 @@ const Login: FunctionComponent = () => {
   };
 
   useEffect(() => {
-    testFetchApi();
+    // testFetchApi();
   }, []);
 
   const onPressLogin = useDebounce(() => {
-    Navigation.push(
-      Storage.currentScreenStackId,
-      component(Screens.SignIn, {
-        bottomTabs: { visible: false, drawBehind: true },
-        topBar: { visible: false, height: 0 },
-      })
-    );
+    startApp();
+    // Navigation.push(
+    //   Storage.currentScreenStackId,
+    //   component(Screens.SignIn, {
+    //     bottomTabs: { visible: false, drawBehind: true },
+    //     topBar: { visible: false, height: 0 },
+    //   })
+    // );
   }, 300);
 
   return (

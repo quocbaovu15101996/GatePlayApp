@@ -1,15 +1,39 @@
+import React from "react";
 import { Navigation } from "react-native-navigation";
-import ListGame from "./ListGame";
+import { QueryClient, QueryClientProvider } from "react-query";
 import Login from "./Login";
-import Profile from "./Profile";
 import { Screens } from "./Screens";
 import SignIn from "./SignIn";
 
-function registerScreens(): void {
+function registerScreens(queryClient: QueryClient): void {
   Navigation.registerComponent(Screens.Login, () => Login);
   Navigation.registerComponent(Screens.SignIn, () => SignIn);
-  Navigation.registerComponent(Screens.ListGame, () => ListGame);
-  Navigation.registerComponent(Screens.Profile, () => Profile);
+  Navigation.registerComponent(Screens.ListGame, () => {
+    const ListGame = require("./ListGame").default;
+    return (props) => (
+      <QueryClientProvider client={queryClient}>
+        <ListGame {...props} />
+      </QueryClientProvider>
+    );
+  });
+
+  Navigation.registerComponent(Screens.Profile, () => {
+    const Profile = require("./Profile").default;
+    return (props) => (
+      <QueryClientProvider client={queryClient}>
+        <Profile {...props} />
+      </QueryClientProvider>
+    );
+  });
+
+  Navigation.registerComponent(Screens.Erace, () => {
+    const Erace = require("./Erace").default;
+    return (props) => (
+      <QueryClientProvider client={queryClient}>
+        <Erace {...props} />
+      </QueryClientProvider>
+    );
+  });
 }
 
 export { registerScreens };

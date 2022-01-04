@@ -63,3 +63,6 @@ ios/Podfile.lock
 
 android/app/release/
 android/app/release/*
+
+.env.production
+.env.staging
