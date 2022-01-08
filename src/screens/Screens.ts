@@ -1,7 +1,7 @@
 const Screens = {
   Login: "login_screen",
   SignIn: "sign_in",
-  ListGame: "list_game_screen",
+  GameList: "game_list_screen",
   Profile: "profile_screen",
   Erace: "erace_screen",
 };

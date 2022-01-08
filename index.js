@@ -1,3 +1,6 @@
-import {start} from './src/Main';
+import { LogBox } from "react-native";
 
-start();
+import App from "./src/App";
+LogBox.ignoreAllLogs(true);
+
+new App();

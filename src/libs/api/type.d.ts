@@ -5,17 +5,27 @@ export type GetRequestParams = {
   action?: string | number;
 };
 export type ApiRequestMethods =
-  | 'DELETE'
-  | 'GET'
+  | "DELETE"
+  | "GET"
   // | 'HEAD'
   // | 'OPTIONS'
   // | 'PATCH'
-  | 'POST'
-  | 'PUT';
+  | "POST"
+  | "PUT";
 
 // | 'TRACE';
 export interface ApiResponse<TData = any> {
-  msg: string;
-  status: number;
+  status: number; // 200 | 400 | 500
   data: TData;
+}
+
+export interface ErrorApiResponse {
+  status: number;
+  data: {
+    status: {
+      code: number;
+      message: string;
+    };
+    timestamp: string;
+  };
 }

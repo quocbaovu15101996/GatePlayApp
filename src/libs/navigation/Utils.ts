@@ -1,129 +1,81 @@
-import { LayoutRoot, Navigation } from "react-native-navigation";
+import { Navigation, OptionsTopBar } from "react-native-navigation";
 import { Storage } from "src/modules/Storage";
+import Colors from "src/styles/colors";
 import { APP_STACK_ID } from "src/utils/enum";
-import { Screens } from "../../screens/Screens";
-
-const layoutAuthenticate: LayoutRoot = {
-  root: {
-    stack: {
-      id: "StackLogin",
-      children: [
-        {
-          component: {
-            name: Screens.Login,
-            options: {
-              topBar: {
-                visible: false,
-                height: 0,
-              },
-              statusBar: {
-                style: "dark",
-                visible: false,
-                drawBehind: true,
-              },
-            },
-          },
-        },
-      ],
-    },
-  },
-};
+import { layoutAuthenticate, layoutRoot } from "./Layouts";
 
 export function startLogin(): void {
   Storage.currentScreenStackId = APP_STACK_ID.login;
   Navigation.setRoot(layoutAuthenticate);
 }
 
-const layoutRoot: LayoutRoot = {
-  root: {
-    bottomTabs: {
-      id: "BOTTOM_TABS_LAYOUT",
-      children: [
-        {
-          stack: {
-            id: "LISTGAME_TAB",
-            children: [
-              {
-                component: {
-                  id: "LISTGAME_SCREEN",
-                  name: Screens.ListGame,
-                },
-              },
-            ],
-            options: {
-              bottomTab: {
-                testID: "LISTGAME_SCREEN_TAB",
-                text: "Game List",
-                textColor: "#373D57",
-                selectedTextColor: "#F96655",
-                icon: require("../../../assets/bottomTabs/listgame.png"),
-                selectedIcon: require("../../../assets/bottomTabs/selected_listgame.png"),
-              },
-              bottomTabs: {
-                backgroundColor: "#151928",
-              },
-            },
-          },
-        },
-        {
-          stack: {
-            id: "PROFILE_TAB",
-            children: [
-              {
-                component: {
-                  id: "PROFILE_SCREEN",
-                  name: Screens.Profile,
-                },
-              },
-            ],
-            options: {
-              bottomTab: {
-                testID: "PROFILE_SCREEN_TAB",
-                text: "Account/Wallet",
-                textColor: "#373D57",
-                selectedTextColor: "#F96655",
-                icon: require("../../../assets/bottomTabs/account.png"),
-                selectedIcon: require("../../../assets/bottomTabs/selected_account.png"),
-                iconWidth: 10,
-                iconHeight: 10,
-              },
-              bottomTabs: {
-                backgroundColor: "#151928",
-              },
-            },
-          },
-        },
-        {
-          stack: {
-            id: "ERACE_TAB",
-            children: [
-              {
-                component: {
-                  id: "ERACE_SCREEN",
-                  name: Screens.Erace,
-                },
-              },
-            ],
-            options: {
-              bottomTab: {
-                testID: "ERAC_SCREEN_TAB",
-                text: "Erace",
-                textColor: "#373D57",
-                selectedTextColor: "#F96655",
-                icon: require("../../../assets/bottomTabs/erace.png"),
-                selectedIcon: require("../../../assets/bottomTabs/selected_erace.png"),
-              },
-              bottomTabs: {
-                backgroundColor: "#151928",
-              },
-            },
-          },
-        },
-      ],
-    },
-  },
-};
-
 export function startApp(): void {
   Navigation.setRoot(layoutRoot);
+}
+
+export function pushSingleScreen(
+  stackId: string,
+  screenId: string,
+  title?: string,
+  passProps?: {
+    [key: string]: any;
+  },
+  showHeader?: boolean,
+  topBarOptions?: OptionsTopBar
+): void {
+  const headerVisible = showHeader ?? false;
+  Navigation.push(stackId, {
+    component: {
+      name: screenId,
+      passProps: {
+        screenName: screenId,
+        ...passProps,
+      },
+      options: {
+        statusBar: {
+          visible: false,
+        },
+        layout: {
+          backgroundColor: Colors.mainColor,
+          componentBackgroundColor: Colors.mainColor,
+        },
+        topBar: {
+          animate: true,
+          title: {
+            text: title,
+            alignment: "center",
+            color: "#172b4d",
+          },
+          leftButtons: [
+            {
+              id: "_GOBACK",
+              // icon: require("../../../assets/app/iconBack.png"),
+              text: "back",
+              color: "#172b4d",
+            },
+          ],
+          height: headerVisible ? 50 : 0,
+          visible: headerVisible,
+          elevation: 1,
+          ...topBarOptions,
+        },
+        sideMenu: {
+          left: {
+            enabled: false,
+          },
+        },
+        bottomTabs: {
+          drawBehind: true,
+          animate: true,
+          visible: false,
+        },
+      },
+    },
+  })
+    .then(() => {
+      // dismissAppOverlay();
+    })
+    .catch((e: Error) => {
+      console.log(e);
+    });
 }

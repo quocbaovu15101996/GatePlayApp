@@ -1,8 +1,6 @@
-import { Screens } from '../../screens/Screens';
-import { APP_STACK_ID } from '../../utils/enum';
-import { Navigation } from 'react-native-navigation';
-import { Storage } from '../../../src/modules/Storage';
-
+import { Navigation } from "react-native-navigation";
+import { Storage } from "src/modules/Storage";
+import { APP_STACK_ID } from "src/utils/enum";
 
 export default function addLayoutProcessors(): void {
   eventsProcessor();
@@ -20,12 +18,12 @@ function eventsProcessor() {
     ({ selectedTabIndex, unselectedTabIndex }) => {
       switch (selectedTabIndex) {
         case 0:
-          Storage.currentScreenStackId = APP_STACK_ID.listGame;
+          Storage.currentScreenStackId = APP_STACK_ID.gameList;
           break;
         case 1:
           Storage.currentScreenStackId = APP_STACK_ID.profile;
           break;
-          case 2:
+        case 2:
           Storage.currentScreenStackId = APP_STACK_ID.erace;
           break;
         default:
@@ -35,7 +33,7 @@ function eventsProcessor() {
   );
 
   Navigation.events().registerComponentDidAppearListener((event) => {
-    if (event.componentType === 'Component') {
+    if (event.componentType === "Component") {
       let componentName = event.componentName;
       Storage.currentScreenId = componentName;
     }

@@ -13,6 +13,9 @@ import com.facebook.soloader.SoLoader;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 
+import org.wonday.orientation.OrientationActivityLifecycle;
+
+import com.microsoft.codepush.react.CodePush;
 public class MainApplication extends NavigationApplication {
 
   private final ReactNativeHost mReactNativeHost =
@@ -35,6 +38,14 @@ public class MainApplication extends NavigationApplication {
         protected String getJSMainModuleName() {
           return "index";
         }
+
+        // 2. Override the getJSBundleFile method in order to let
+        // the CodePush runtime determine where to get the JS
+        // bundle location from on each app start
+        @Override
+        protected String getJSBundleFile() {
+            return CodePush.getJSBundleFile();
+        }
       };
 
   @Override
@@ -44,6 +55,7 @@ public class MainApplication extends NavigationApplication {
 
   @Override
   public void onCreate() {
+    registerActivityLifecycleCallbacks(OrientationActivityLifecycle.getInstance());
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());

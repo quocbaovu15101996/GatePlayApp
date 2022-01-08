@@ -52,21 +52,17 @@ export const requestLog = ({
   console.groupCollapsed(title.join(" "), ...headerCSS);
   if (status) {
     console.log(
-      "%cStatus:   ",
+      "%cStatus: ",
       `color: ${success ? "inherit" : "#F20404"}; font-weight: bold`,
       status
     );
   }
   if (params) {
-    console.log(
-      "%cParams:        ",
-      `color: '#9E9E9E'; font-weight: bold`,
-      params
-    );
+    console.log("%cParams: ", `color: '#9E9E9E'; font-weight: bold`, params);
   }
   if (Storage.accessToken) {
     console.log(
-      "%cAccessToken:   ",
+      "%cAccessToken: ",
       `color: '#9E9E9E'; font-weight: bold`,
       Storage.accessToken
     );
@@ -75,11 +71,7 @@ export const requestLog = ({
     console.log("%cResponse:", `color: #03A9F4; font-weight: bold`, data);
   }
   if (headers) {
-    console.log(
-      "%cHeaders:       ",
-      `color: #4CAF50; font-weight: bold`,
-      headers
-    );
+    console.log("%cHeaders: ", `color: #4CAF50; font-weight: bold`, headers);
   }
   console.groupEnd();
 };

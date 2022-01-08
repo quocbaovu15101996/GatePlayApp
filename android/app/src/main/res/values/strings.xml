@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GatePlayApp</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">3E9cUjm7M6Qle_dalLYp7WmFhhwyVK1QCXMGA</string>
 </resources>

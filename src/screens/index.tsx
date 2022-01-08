@@ -8,11 +8,11 @@ import SignIn from "./SignIn";
 function registerScreens(queryClient: QueryClient): void {
   Navigation.registerComponent(Screens.Login, () => Login);
   Navigation.registerComponent(Screens.SignIn, () => SignIn);
-  Navigation.registerComponent(Screens.ListGame, () => {
-    const ListGame = require("./ListGame").default;
+  Navigation.registerComponent(Screens.GameList, () => {
+    const GameList = require("./GameList").default;
     return (props) => (
       <QueryClientProvider client={queryClient}>
-        <ListGame {...props} />
+        <GameList {...props} />
       </QueryClientProvider>
     );
   });

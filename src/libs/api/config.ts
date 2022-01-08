@@ -7,5 +7,6 @@ export const config = {
 };
 
 export const url = {
-  listGame: "public/v1/market/get-summaries",
+  login: "v1/auth/login/credential",
+  listGame: "v1/games/tags",
 };

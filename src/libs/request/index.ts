@@ -1,18 +1,15 @@
 import axios, { AxiosError, AxiosRequestConfig, Method } from "axios";
 import { config } from "../api/config";
-import type { ApiResponse } from "../api/type";
-import { APP_ID } from "@env";
 import { Storage } from "src/modules/Storage";
 import { requestLog } from "src/modules/logger";
-import now from 'performance-now';
+import now from "performance-now";
 
 export async function request<TData>(
   url: string,
   method?: Method,
   data?: any,
-  options?: AxiosRequestConfig,
-  forkException?: boolean
-): Promise<ApiResponse<TData>> {
+  options?: AxiosRequestConfig
+): Promise<any> {
   const headers: { [key: string]: string } = {
     "Content-Type": config.contentType,
   };
@@ -24,11 +21,6 @@ export async function request<TData>(
     source.cancel(`Timeout of ${config.timeout}ms.`);
   }, config.timeout);
 
-//   if (url.includes("?")) {
-//     url = url + "&appId=" + APP_ID + "&version=" + config.version;
-//   } else {
-//     url = url + "?appId=" + APP_ID + "&version=" + config.version;
-//   }
   return new Promise((resolve, reject) => {
     const timeStartRequest = now();
     const requestMethod = method ?? "GET";
@@ -53,7 +45,7 @@ export async function request<TData>(
           headers: response.headers,
           status: response.status,
         });
-        resolve(response.data);
+        resolve(response);
       })
       .catch((error: AxiosError) => {
         const timeReceiveResponse = now();
@@ -61,18 +53,13 @@ export async function request<TData>(
           url,
           method: requestMethod,
           params: data,
-          data: error.response?.data,
+          data: error.response,
           startTime: timeStartRequest,
           endTime: timeReceiveResponse,
           headers: error.response?.headers,
           status: error.response?.status,
         });
-        if (forkException) {
-          // @ts-ignore
-          resolve({ data: undefined, status: 0, msg: error.message });
-        } else {
-          reject(error.response?.statusText);
-        }
+        resolve(error.response);
       });
   });
 }
