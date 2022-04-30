@@ -1,9 +1,7 @@
 const Screens = {
   Login: "login_screen",
   SignIn: "sign_in",
-  GameList: "game_list_screen",
-  Profile: "profile_screen",
-  Erace: "erace_screen",
+  MyMap: "my_map",
 };
 
 export { Screens };

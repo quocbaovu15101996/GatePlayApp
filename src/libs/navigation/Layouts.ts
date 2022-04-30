@@ -61,34 +61,8 @@ const layoutAuthenticate: LayoutRoot = {
   },
 };
 
-const stackGameList = [
-  component(Screens.GameList, {
-    statusBar: {
-      style: "dark",
-      visible: false,
-    },
-    topBar: {
-      visible: false,
-      height: 0,
-    },
-  }),
-];
-
-const stackAccount = [
-  component(Screens.Profile, {
-    statusBar: {
-      style: "dark",
-      visible: false,
-    },
-    topBar: {
-      visible: false,
-      height: 0,
-    },
-  }),
-];
-
-const stackErace = [
-  component(Screens.Erace, {
+const stackMyMap = [
+  component(Screens.MyMap, {
     statusBar: {
       style: "dark",
       visible: false,
@@ -102,74 +76,11 @@ const stackErace = [
 
 const layoutRoot: LayoutRoot = {
   root: {
-    bottomTabs: {
-      options: {
-        bottomTabs: {
-          currentTabIndex: 1,
-        },
-      },
-      id: TAB_ROOT_ID,
-      children: [
-        stack(stackGameList, APP_STACK_ID.gameList, {
-          sideMenu: {
-            right: {
-              enabled: true,
-            },
-          },
-          bottomTab: {
-            testID: "GAMELIST_SCREEN_TAB",
-            text: "Game List",
-            textColor: "#373D57",
-            selectedTextColor: "#F96655",
-            icon: require("assets/bottomTabs/gameList.png"),
-            selectedIcon: require("assets/bottomTabs/selected_gameList.png"),
-          },
-          bottomTabs: {
-            backgroundColor: "#151928",
-          },
-          popGesture: true,
-        }),
-        stack(stackAccount, APP_STACK_ID.profile, {
-          sideMenu: {
-            left: {
-              enabled: false,
-            },
-          },
-          bottomTab: {
-            testID: "PROFILE_SCREEN_TAB",
-            text: "Account/Wallet",
-            textColor: "#373D57",
-            selectedTextColor: "#F96655",
-            icon: require("assets/bottomTabs/account.png"),
-            selectedIcon: require("assets/bottomTabs/selected_account.png"),
-          },
-          bottomTabs: {
-            backgroundColor: "#151928",
-          },
-          popGesture: true,
-        }),
-        stack(stackErace, APP_STACK_ID.erace, {
-          sideMenu: {
-            left: {
-              enabled: false,
-            },
-          },
-          bottomTab: {
-            testID: "ERACE_SCREEN_TAB",
-            text: "Erace",
-            textColor: "#373D57",
-            selectedTextColor: "#F96655",
-            icon: require("assets/bottomTabs/erace.png"),
-            selectedIcon: require("assets/bottomTabs/selected_erace.png"),
-          },
-          bottomTabs: {
-            backgroundColor: "#151928",
-          },
-          popGesture: true,
-        }),
-      ],
-    },
-  },
+    stack: {
+      id: APP_STACK_ID.myMap,
+      children: stackMyMap
+    }
+  }
 };
 
 export { component, stack, layoutAuthenticate, layoutRoot };

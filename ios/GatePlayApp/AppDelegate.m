@@ -5,6 +5,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 #import <CodePush/CodePush.h>
 
@@ -13,14 +14,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   [ReactNativeNavigation bootstrapWithDelegate:self launchOptions:launchOptions];
-
+  [GMSServices provideAPIKey:@"AIzaSyCMoHPy6fRMcYWnTfij2S7qDnToDoYpcSE"]; // add this line using the api key obtained from Google Consol
   return YES;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
   #if DEBUG
-    return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
+
   #else
     return [CodePush bundleURL];
   #endif

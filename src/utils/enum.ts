@@ -4,9 +4,7 @@ export const ICON_LOGIN = {
 
 export const APP_STACK_ID = {
   notification: "StackNotification",
-  gameList: "StackGameList",
-  erace: "StackErace",
-  profile: "StackProfile",
+  myMap: "myMap",
   login: "StackLogin",
 };
 
